@@ -37,12 +37,14 @@ export class Loop {
     if (this.#key) cancelAnimationFrame(this.#key)
     this.#key = 0
   }
-  isRunning() { !!this.#key }
+  isRunning() { return !!this.#key }
 }
 export class LoopMachine extends Loop {
   #list
   constructor(fnList = [], opt) {
     const list = []
+    if (typeof fnList === "function") fnList = [fnList]
+    if(!Array.isArray(fnList)) throw new Error("Bad argument")
     fnList.forEach(x => isFunc(x) && list.push(x))
     super(T => list.forEach(x => x(T)), opt)
     this.#list = list
@@ -69,4 +71,4 @@ export class LoopMachine extends Loop {
     return this
   }
 }
-globalThis.Loop = Loop
+globalThis.Loop = LoopMachine
