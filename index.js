@@ -17,7 +17,7 @@ export class Loop {
   /**
    * @param {Function} fn
    * @param {Object} [opt]
-   * @param {number} [opt.maxOffsetInterval]
+   * @param {n} [opt.maxOffsetInterval]
    * @param {boolean} [opt.play]
    */
   constructor(fn, opt) {
