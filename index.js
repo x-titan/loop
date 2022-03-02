@@ -71,4 +71,3 @@ export class LoopMachine extends Loop {
     return this
   }
 }
-globalThis.Loop = LoopMachine
